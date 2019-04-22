@@ -1,0 +1,35 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="alert alert-success" *ngIf= "isSuccess">
+                        <strong>Success!</strong>
+                      </div>
+                <h2>Excel update Form</h2>
+                <form [formGroup]="updateExcelForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Enter Cell Id</label>
+                        <input type="text" formControlName="cellId" class="form-control" placeholder="Cell Id" />
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Value</label>
+                        <input type="text" formControlName="value" class="form-control" placeholder="Value">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Select File</label>
+                        <select formControlName="filename" class="form-control" id="filename" required>
+                            <option *ngFor="let name of filenames" [value]="name">{{name}} </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button [disabled]="!updateExcelForm.valid" class="btn btn-primary">Save</button>
+                    </div>
+
+                    <a class="nav-link register-custom" routerLink="/services/list">back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
